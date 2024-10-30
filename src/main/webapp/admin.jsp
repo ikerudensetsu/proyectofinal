@@ -14,33 +14,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
 </head>
-<body class="bg-white text-center">
-    <div class="bg-gray-200 p-4 flex justify-between items-center">
-       <div class="mb-4">
-        <c:if test="${not empty sessionScope.rolUsuario}">
-            <p class="text-lg">Rol: <strong>${sessionScope.rolUsuario}</strong></p>
-        </c:if>
+<body class="bg-gradient-to-br from-blue-400 to-indigo-600 text-center min-h-screen p-6 text-gray-800">
+    <!-- Header -->
+    <div class="bg-white p-4 rounded-lg shadow-lg mb-6">
+        <div class="flex justify-between items-center">
+            <div class="text-lg font-semibold text-blue-600">
+                Restaurante Sorpresa
+            </div>
+            <c:if test="${not empty sessionScope.rolUsuario}">
+                <p class="text-md">Rol: <strong>${sessionScope.rolUsuario}</strong></p>
+            </c:if>
+        </div>
     </div>
-        </div>
-        <div class="text-lg font-semibold">
-            Restaurante Sorpresa
-        </div>
-       
- 
-    <div class="mt-4">
+
+    <!-- Navegación -->
+    <div class="bg-white p-4 rounded-lg shadow-lg mb-6">
         <div class="flex justify-center space-x-4">
-            <button class="bg-blue-500 text-white px-4 py-2 rounded" onclick="window.location.href='menu.jsp';" >Menu</button>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded">pedidos</button>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded">pagos </button>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded">clientes</button>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300" onclick="window.location.href='platos.jsp';">Menú</button>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300">Pedidos</button>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300">Pagos</button>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300">Clientes</button>
         </div>
     </div>
 
-    <div class="mt-8">
-        <img alt="Restaurant Sorpresa logo" class="mx-auto" height="200" src="https://i.postimg.cc/zXbBgXNt/104162668-3152138588181921-5802797647913938028-n.jpg" width="200"/>
-        <button class="border px-4 py-2 mt-4">Descubre tu Sorpresa</button>
+    <!-- Logo y Sorpresa -->
+    <div class="bg-white p-8 rounded-lg shadow-lg mb-6">
+        <img alt="Restaurante Sorpresa logo" class="mx-auto mb-4" height="200" src="https://i.postimg.cc/zXbBgXNt/104162668-3152138588181921-5802797647913938028-n.jpg" width="200"/>
+        <button class="bg-blue-500 text-white px-4 py-2 mt-4 rounded hover:bg-blue-600 transition duration-300">
+            Descubre tu Sorpresa
+        </button>
     </div>
-
-    
 </body>
 </html>
