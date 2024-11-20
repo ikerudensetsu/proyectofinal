@@ -30,7 +30,7 @@ public class ArticuloTest {
         articulo.setCantidad(10);
 
         assertEquals(202, articulo.getCodigoProducto(), "El código del producto debería ser 202.");
-        assertEquals(10, articulo.getCantidad(), "La cantidad debería ser 10.");
+        assertEquals(10, articulo.getCantidad(), "La cantidad debería ser 11.");
     }
 
     @Test
