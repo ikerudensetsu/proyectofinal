@@ -9,7 +9,7 @@ public class Database {
     // Configuración de la base de datos
     private static final String URL = "jdbc:mysql://localhost:3306/deliverydb"; // Cambia "tu_base_de_datos"
     private static final String USER = "root";  // Cambia "tu_usuario"
-    private static final String PASSWORD = "S0p0rt3";  // Cambia "tu_contraseña"
+    private static final String PASSWORD = "@12Juan202005";  // Cambia "tu_contraseña"
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver"; // Asegúrate de usar el conector correcto
 
     // Método para obtener una conexión
