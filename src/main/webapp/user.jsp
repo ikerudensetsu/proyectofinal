@@ -3,6 +3,8 @@
 <%
     HttpSession sesion = request.getSession(true);
     Usuario usuario = sesion.getAttribute("usuario") == null ? null : (Usuario) sesion.getAttribute("usuario");
+    sesion.setAttribute("carrito")= new ArrayList<Articulo>();
+    sesion.setAttribute("pedido")= new ArrayList<Articulo>();
 %>
 <!DOCTYPE html>
 <html lang="es">
