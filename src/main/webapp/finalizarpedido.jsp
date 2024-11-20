@@ -1,9 +1,3 @@
-<%-- 
-    Document   : confirmarpedido
-    Created on : 21 oct. 2024, 16:24:53
-    Author     : jacs2
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">

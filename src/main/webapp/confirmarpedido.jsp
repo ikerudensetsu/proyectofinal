@@ -1,9 +1,3 @@
-<%-- 
-    Document   : confirmarpedido
-    Created on : 21 oct. 2024, 17:40:04
-    Author     : jacs2
---%>
-
 <h2>Confirmar Pedido</h2>
 
 <form action="ConfirmarpedidoServlet" method="post">

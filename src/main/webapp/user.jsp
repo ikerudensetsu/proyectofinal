@@ -1,10 +1,9 @@
-<%-- 
-    Document   : user
-    Created on : 16 oct. 2024, 00:46:23
-    Author     : jacs2
---%>
-
+<%@page import="Model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession sesion = request.getSession(true);
+    Usuario usuario = sesion.getAttribute("usuario") == null ? null : (Usuario) sesion.getAttribute("usuario");
+%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,8 +20,15 @@
             <div class="text-lg font-semibold text-blue-600">
                 Web Delivery - Restaurante Sorpresa
             </div>
-            <c:if test="${not empty sessionScope.rolUsuario}">
-                <p class="text-md">Rol: <strong>${sessionScope.rolUsuario}</strong></p>
+            <c:if test="${not empty sessionScope.usuario}">
+                <p class="text-md"><strong><%=usuario.getNombre()%></strong>
+                    <a href="carrito.jsp" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
+                        <i class="fas fa-shopping-cart"></i> Mi Carrito
+                    </a>
+                    <a href="login.jsp" class="bg-gray-500 hover:bg-gray-700 text-black font-bold py-1 px-3 rounded">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                    </a>
+                </p>
             </c:if>
         </div>
     </div>
@@ -31,7 +37,7 @@
     <div class="bg-white p-4 rounded-lg shadow-lg mb-6">
         <div class="flex justify-center space-x-4">
             <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300" onclick="window.location.href='menu.jsp';">Menú</button>
-            <button class="border px-4 py-2 rounded hover:bg-gray-200 transition duration-300">Mi Pedido</button>
+            <button class="border px-4 py-2 rounded hover:bg-gray-200 transition duration-300" onclick="window.location.href='pedido.jsp';">Mi Pedido</button>
             <button class="border px-4 py-2 rounded hover:bg-gray-200 transition duration-300">Promociones</button>
             <button class="border px-4 py-2 rounded hover:bg-gray-200 transition duration-300">Contacto</button>
         </div>
@@ -44,7 +50,5 @@
             Descubre tu Sorpresa
         </button>
     </div>
-
-    
 </body>
 </html>

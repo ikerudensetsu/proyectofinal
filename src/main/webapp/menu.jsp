@@ -1,12 +1,10 @@
-<%-- 
-    Document   : menu
-    Created on : 16 oct. 2024, 01:42:28
-    Author     : jacs2
---%>
-
-
+<%@page import="Model.Usuario"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- JSTL para manejo de la lógica de iteración -->
+<%
+    HttpSession sesion = request.getSession(true);
+    Usuario usuario = sesion.getAttribute("usuario") == null ? null : (Usuario) sesion.getAttribute("usuario");
+%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,14 +17,12 @@
 <body class="bg-gray-100">
 
 <div class="max-w-4xl mx-auto mt-10 bg-white rounded-lg shadow-lg p-6">
-    <h2 class="text-2xl font-bold text-gray-700 mb-4">
-        <i class="fas fa-home"></i> Menú
-    </h2>
-
-    <!-- Mostrar rol del usuario -->
-    <div class="mb-4">
-        <c:if test="${not empty sessionScope.rolUsuario}">
-            <p class="text-lg">Rol: <strong>${sessionScope.rolUsuario}</strong></p>
+    <div class="flex justify-between items-center">
+        <h2 class="text-2xl font-bold text-gray-700 mb-4">
+            <i class="fas fa-home"></i> Menú
+        </h2>
+        <c:if test="${not empty sessionScope.usuario}">
+            <p class="text-md"><strong><%=usuario.getNombre()%></strong></p>
         </c:if>
     </div>
 <!-- Título -->
@@ -51,16 +47,6 @@
             <button type="submit" class="absolute left-2 top-2 text-gray-500"><i class="fas fa-search"></i></button>
         </div>
     </form>
-
-    <!-- Opciones del carrito de compras -->
-    <div class="flex space-x-4 mb-6">
-        <button onclick="window.location.href='CarritoServlet'" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-            <i class="fas fa-shopping-cart"></i> Ver Carrito
-        </button>
-        <button onclick="window.location.href='FinalizarPedidoServlet'" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            <i class="fas fa-check"></i> Finalizar Pedido
-        </button>
-    </div>
 </div>
 
 <!-- Productos disponibles -->
@@ -69,23 +55,20 @@
     <table class="min-w-full bg-white">
         <thead class="bg-gray-200">
             <tr>
-                <th class="py-2 px-4 text-left">ID</th>
                 <th class="py-2 px-4 text-left">Nombre</th>
                 <th class="py-2 px-4 text-left">Tipo</th>
                 <th class="py-2 px-4 text-left">Precio</th>
-                <th class="py-2 px-4 text-left">Agregar al carrito</th>
             </tr>
         </thead>
         <tbody>
             <!-- Itera sobre la lista de productos enviada por el servlet -->
             <c:forEach var="producto" items="${productos}">
                 <tr class="border-b">
-                    <td class="py-2 px-4">${producto.id}</td>
                     <td class="py-2 px-4">${producto.nombre}</td>
                     <td class="py-2 px-4">${producto.tipo}</td>
                     <td class="py-2 px-4">S/. ${producto.precio}</td>
                     <td class="py-2 px-4">
-                        <a href="AgregarCarritoServlet?productoId=${producto.id}&cantidad=1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
+                        <a href="CarritoServlet?action=add&productoId=${producto.id}&cantidad=1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">
                             <i class="fas fa-cart-plus"></i> Agregar
                         </a>
                     </td>
@@ -101,8 +84,5 @@
         </tbody>
     </table>
 </div>
-
 </body>
 </html>
-
-

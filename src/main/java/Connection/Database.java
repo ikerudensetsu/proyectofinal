@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Conexión;
+package Connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,9 +7,9 @@ import java.sql.SQLException;
 public class Database {
 
     // Configuración de la base de datos
-    private static final String URL = "jdbc:mysql://localhost:3306/tu_base_de_datos"; // Cambia "tu_base_de_datos"
-    private static final String USER = "tu_usuario";  // Cambia "tu_usuario"
-    private static final String PASSWORD = "tu_contraseña";  // Cambia "tu_contraseña"
+    private static final String URL = "jdbc:mysql://localhost:3306/deliverydb"; // Cambia "tu_base_de_datos"
+    private static final String USER = "root";  // Cambia "tu_usuario"
+    private static final String PASSWORD = "S0p0rt3";  // Cambia "tu_contraseña"
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver"; // Asegúrate de usar el conector correcto
 
     // Método para obtener una conexión
